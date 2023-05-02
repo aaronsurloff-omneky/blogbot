@@ -1,7 +1,5 @@
 ## Bring in deps
 import os
-from apikeys import openai_apikey 
-from apikeys import serpapi_apikey 
 
 import streamlit as st
 from langchain.llms import OpenAI
@@ -14,6 +12,8 @@ from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 
+openai.api_key = st.secrets["openai_apikey"]
+serpapi.api_key = st.secrets["serpapi_apikey"]
 FAST_TOKEN_LIMIT=4000
 SMART_TOKEN_LIMIT=4000
 os.environ['OPENAI_API_KEY'] = openai_apikey
