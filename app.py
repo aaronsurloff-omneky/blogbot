@@ -13,12 +13,10 @@ from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 
-openai.api_key = st.secrets["openai_apikey"]
-serpapi.api_key = st.secrets["serpapi_apikey"]
+openai_apikey = st.secrets["openai_apikey"]
+serpapi_apikey = st.secrets["serpapi_apikey"]
 FAST_TOKEN_LIMIT=4000
 SMART_TOKEN_LIMIT=4000
-os.environ['OPENAI_API_KEY'] = openai_apikey
-os.environ['SERPAPI_API_KEY'] = serpapi_apikey
 
 ## App Framework
 st.title('Omneky Blog Bot')
