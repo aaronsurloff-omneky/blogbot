@@ -12,8 +12,8 @@ from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 
-st.secrets["openai_apikey"] = openai.api_key
-st.secrets["serpapi_apikey"] = serpapi_apikey
+openai.api_key = st.secrets["openai_apikey"]
+serpapi_apikey = st.secrets["serpapi_apikey"]
 
 ## App Framework
 st.title('Omneky Blog Bot')
