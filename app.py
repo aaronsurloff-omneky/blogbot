@@ -1,6 +1,4 @@
 ## Bring in deps
-import langchain
-
 import streamlit as st
 from langchain.llms import OpenAI
 from langchain import SerpAPIWrapper
