@@ -9,6 +9,7 @@ from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 
+openai.api_key = st.secrets{"openai_apikey"]
 serpapi_apikey = st.secrets["serpapi_apikey"]
 
 ## App Framework
