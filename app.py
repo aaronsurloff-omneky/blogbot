@@ -44,6 +44,8 @@ blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_ke
 if prompt:
     title = title_chain.run(prompt)
     st.write(title)
+with st.spinner('Writing Your Blog...'):
+    time.sleep(5)
     google_research = agent.run(title)
     blog = blog_chain.run(title=title,  google_research=google_research)
     
