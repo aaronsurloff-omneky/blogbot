@@ -9,7 +9,7 @@ from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 
-OPENAI_API_KEY = st.secrets["openai_apikey"]
+openai_api_key = st.secrets["openai_apikey"]
 serpapi_apikey = st.secrets["serpapi_apikey"]
 
 ## App Framework
@@ -33,7 +33,7 @@ blog_memory = ConversationBufferMemory(input_key='title', memory_key='chat_histo
 
 
 ## LLMS
-llm = OpenAI(temperature=0.9, max_tokens = 1000)
+llm = OpenAI(temperature=0.9, max_tokens = 1000, openai_api_key = openai_api_key)
 tools = load_tools(["serpapi"], llm=llm, serpapi_api_key = serpapi_apikey)
 agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
 
