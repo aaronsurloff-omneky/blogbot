@@ -7,7 +7,6 @@ from langchain import SerpAPIWrapper
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 from langchain.memory import ConversationBufferMemory
-from langchain.utilities import WikipediaAPIWrapper
 from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
@@ -43,13 +42,10 @@ agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
 title_chain = LLMChain(llm=llm, prompt = title_template, verbose = True, output_key='title', memory=title_memory)
 blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_key='blog', memory=blog_memory)
 
-# google = SerpAPIWrapper()
-
 ## show stuff to screen if there is a prompt
 if prompt:
     title = title_chain.run(prompt)
     google_research = agent.run(title)
-#   google_research = google.run(title)
     blog = blog_chain.run(title=title,  google_research=google_research)
     
     st.write(title)
