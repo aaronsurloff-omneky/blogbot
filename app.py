@@ -13,7 +13,7 @@ from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 
-openai_apikey = st.secrets["openai_apikey"]
+openai.apikey = st.secrets["openai_apikey"]
 serpapi_apikey = st.secrets["serpapi_apikey"]
 FAST_TOKEN_LIMIT=4000
 SMART_TOKEN_LIMIT=4000
