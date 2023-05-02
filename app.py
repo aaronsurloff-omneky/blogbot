@@ -1,5 +1,4 @@
 ## Bring in deps
-import os
 import langchain
 
 import streamlit as st
