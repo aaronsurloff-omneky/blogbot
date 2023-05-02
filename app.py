@@ -43,10 +43,10 @@ blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_ke
 ## show stuff to screen if there is a prompt
 if prompt:
     title = title_chain.run(prompt)
+    st.write(title)
     google_research = agent.run(title)
     blog = blog_chain.run(title=title,  google_research=google_research)
     
-    st.write(title)
     st.write(blog)
 
     with st.expander('Title History'):
