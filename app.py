@@ -12,8 +12,8 @@ from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 
 openai_api_key = st.secrets["openai_apikey"]
-google_apikey = st.secrets["google_api_key"]
-google_cseid = st.secrets["google_cse_id"]
+google_api_key = st.secrets["google_api_key"]
+google_cse_id = st.secrets["google_cse_id"]
 
 
 ## App Framework
@@ -38,7 +38,7 @@ blog_memory = ConversationBufferMemory(input_key='title', memory_key='chat_histo
 
 ## LLMS
 llm = OpenAI(temperature=0.9, max_tokens = 1000, openai_api_key = openai_api_key)
-tools = load_tools(["google-search"], llm=llm, google_api_key = google_apikey, google_cse_id=google_cseid)
+tools = load_tools(["google-search"], llm=llm, google_api_key = google_api_key, google_cse_id=google_cse_id)
 agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
 
 title_chain = LLMChain(llm=llm, prompt = title_template, verbose = True, output_key='title', memory=title_memory)
