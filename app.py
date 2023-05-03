@@ -35,6 +35,8 @@ blog_template = PromptTemplate(
 title_memory = ConversationBufferMemory(input_key='topic', memory_key='chat_history')
 blog_memory = ConversationBufferMemory(input_key='title', memory_key='chat_history')
 
+#search setup
+search = GoogleSearchAPIWrapper(google_api_key = google_api_key, google_cse_id=google_cse_id)
 
 ## LLMS
 llm = OpenAI(temperature=0.9, max_tokens = 1000, openai_api_key = openai_api_key)
@@ -43,9 +45,6 @@ agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
 
 title_chain = LLMChain(llm=llm, prompt = title_template, verbose = True, output_key='title', memory=title_memory)
 blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_key='blog', memory=blog_memory)
-
-#search setup
-search = GoogleSearchAPIWrapper(google_api_key = google_api_key, google_cse_id=google_cse_id)
 
 ## show stuff to screen if there is a prompt
 if prompt:
