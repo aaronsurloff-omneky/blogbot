@@ -12,7 +12,7 @@ from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 
 openai_api_key = st.secrets["openai_apikey"]
-google_api_key = st.secrets["google_api_key"]
+google_api_key = "AIzaSyC9Yt28TOXTBP6DlhYDWkhUdhUNNnO486M"
 google_cse_id = st.secrets["google_cse_id"]
 
 
