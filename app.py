@@ -13,6 +13,7 @@ from langchain.agents import AgentType
 
 openai_api_key = st.secrets["openai_apikey"]
 serpapi_apikey = st.secrets["serpapi_apikey"]
+google_api_key = st.secrets["google_api_key"]
 
 ## App Framework
 st.title('Omneky Blog Bot')
@@ -36,11 +37,14 @@ blog_memory = ConversationBufferMemory(input_key='title', memory_key='chat_histo
 
 ## LLMS
 llm = OpenAI(temperature=0.9, max_tokens = 1000, openai_api_key = openai_api_key)
-tools = load_tools(["serpapi"], llm=llm, serpapi_api_key = serpapi_apikey)
+tools = load_tools(["google-search"], llm=llm, serpapi_api_key = serpapi_apikey)
 agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
 
 title_chain = LLMChain(llm=llm, prompt = title_template, verbose = True, output_key='title', memory=title_memory)
 blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_key='blog', memory=blog_memory)
+
+#search setup
+search = GoogleSearchAPIWrapper()
 
 ## show stuff to screen if there is a prompt
 if prompt:
