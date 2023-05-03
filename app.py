@@ -38,14 +38,14 @@ blog_memory = ConversationBufferMemory(input_key='title', memory_key='chat_histo
 
 ## LLMS
 llm = OpenAI(temperature=0.9, max_tokens = 1000, openai_api_key = openai_api_key)
-tools = load_tools(["google-search"], llm=llm, google_api_key = google_api_key, google_cse_id=google_cse_id)
+tools = load_tools(["google-search"], llm=llm)
 agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
 
 title_chain = LLMChain(llm=llm, prompt = title_template, verbose = True, output_key='title', memory=title_memory)
 blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_key='blog', memory=blog_memory)
 
 #search setup
-search = GoogleSearchAPIWrapper()
+search = GoogleSearchAPIWrapper(google_api_key = google_api_key, google_cse_id=google_cse_id)
 
 ## show stuff to screen if there is a prompt
 if prompt:
