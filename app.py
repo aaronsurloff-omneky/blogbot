@@ -4,8 +4,9 @@ import time
 from langchain.llms import OpenAI
 from langchain import SerpAPIWrapper
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain, SequentialChain
+from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
+from langchain.utilities import GoogleSearchAPIWrapper
 from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
