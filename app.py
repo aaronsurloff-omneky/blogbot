@@ -43,9 +43,6 @@ agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
 title_chain = LLMChain(llm=llm, prompt = title_template, verbose = True, output_key='title', memory=title_memory)
 blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_key='blog', memory=blog_memory)
 
-#search setup
-search = GoogleSearchAPIWrapper()
-
 ## show stuff to screen if there is a prompt
 if prompt:
     title = title_chain.run(prompt)
