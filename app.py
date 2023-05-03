@@ -44,7 +44,7 @@ title_chain = LLMChain(llm=llm, prompt = title_template, verbose = True, output_
 blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_key='blog', memory=blog_memory)
 
 #search setup
-search = GoogleSearchAPIWrapper(google_api_key = google_api_key, google_cse_id=google_cse_id)
+search = GoogleSearchAPIWrapper()
 
 ## show stuff to screen if there is a prompt
 if prompt:
