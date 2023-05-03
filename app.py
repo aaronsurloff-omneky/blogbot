@@ -46,18 +46,17 @@ blog_chain = LLMChain(llm=llm, prompt = blog_template, verbose = True, output_ke
 if prompt:
     title = title_chain.run(prompt)
     st.write(title)
-with st.spinner('Writing Your Blog...'):
-    time.sleep(35)
-    google_research = agent.run(title)
-    blog = blog_chain.run(title=title,  google_research=google_research)
+    with st.spinner('Writing Your Blog...'):
+        google_research = agent.run(title)
+        blog = blog_chain.run(title=title,  google_research=google_research)
     
-    st.write(blog)
+        st.write(blog)
 
-    with st.expander('Title History'):
-        st.info(title_memory.buffer)
+        with st.expander('Title History'):
+            st.info(title_memory.buffer)
     
-    with st.expander('Blog History'):
-        st.info(blog_memory.buffer)
+        with st.expander('Blog History'):
+            st.info(blog_memory.buffer)
 
-    with st.expander('Google Research'):
-        st.info(google_research)
+        with st.expander('Google Research'):
+            st.info(google_research)
